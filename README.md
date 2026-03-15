@@ -1,6 +1,6 @@
 # Fattura Estera → XML FatturaPA
 
-Skill per [Claude](https://claude.ai) che converte fatture ricevute da fornitori esteri (UE ed extra-UE) in file XML conformi allo schema FatturaPA v1.2.2, pronti per l'importazione nei gestionali contabili italiani.
+Skill per [Claude](https://claude.ai) che converte fatture ricevute da fornitori esteri (UE ed extra-UE) in file XML conformi allo schema standard italiano, pronti per l'importazione nei gestionali contabili italiani.
 
 ## Il problema
 
@@ -25,7 +25,7 @@ Questa è una soluzione di **workaround**: semplifica e ottimizza i tempi di imp
 
 La skill si ferma automaticamente e chiede conferma su:
 
-1. **TipoDocumento = TD01, sempre.** Non usa mai TD17, TD18, TD19 o altri codici.
+1. **TipoDocumento = TD01, sempre.** Non usa mai TD17, TD18, TD19 o altri codici. Importando una fattura TD17, TD18 e TD19, per quanto testato, il gestionale non la considera correttamente. La fattura sarà quindi sempre TD1, e la causale dovrà essere variata manualmente nel gestionale.
 2. **P.IVA del cessionario/committente italiano.** Se non è presente nel documento, la chiede all'utente. Non procede con campi vuoti.
 3. **Dati del fornitore estero.** Verifica che i dati del cedente/prestatore siano completi e corretti.
 
@@ -34,7 +34,7 @@ La skill si ferma automaticamente e chiede conferma su:
 Serve un piano Claude a pagamento (Pro, Max, Team o Enterprise) con la funzione "Esecuzione codice e creazione file" attiva.
 
 1. Scarica la cartella `fattura-estera-xml` da questa repository
-2. Su Claude, vai in **Impostazioni → Personalizza → Competenze**
+2. Su Claude, vai in **Personalizza → Competenze**
 3. Clicca **"+"** e carica la cartella
 4. La skill si attiva automaticamente quando carichi una fattura estera
 
